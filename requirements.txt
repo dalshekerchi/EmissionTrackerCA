@@ -1,5 +1,3 @@
-# CSC110 Fall 2020: Python libraries in Final Project.
-
 # Testing and code checking
 hypothesis
 pytest
@@ -11,18 +9,10 @@ plotly-express
 
 # User interface
 Pillow
-PIL
-
-### The libraries that are commented out should stay commented out ###
 
 # Imports
-# tkinter
+# python3-tk #tkinter
 # psutilPIP
 
 # Data Reading
 pandas
-# os
-# csv
-# json
-# ast
-# math

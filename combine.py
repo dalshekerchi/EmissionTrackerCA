@@ -1,20 +1,8 @@
-"""CSC110 Fall 2020 Final Project, Plotting Carbon Dioxide Emissions
-
+"""
 Description
 ===============================
 This module uses the input data to plot carbon dioxide emissions
 and temperature anomalies as line graphs using plotly.
-
-Copyright and Usage Information
-===============================
-
-This file is provided solely for the personal and private use of TA's and professors
-teaching CSC110 at the University of Toronto St. George campus. All forms of
-distribution of this code, whether as given or with any changes, are
-expressly prohibited. For more information on copyright for CSC110 materials,
-please consult our Course Syllabus.
-
-This file is Copyright (c) 2020 Dana Alshekerchi, Nehchal Kalsi, Rachel Kim, Kathy Lee.
 """
 from typing import List, Any, Dict
 import plotly.graph_objects as go

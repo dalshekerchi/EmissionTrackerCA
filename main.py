@@ -1,28 +1,17 @@
-"""CSC110 Fall 2020 Final Project, Main
-
+"""
 Description
 ===============================
 This module is the graphical user interface that allows the user to access all the components of
 our project. To display a map, the interface prompts the user to enter a valid year, which creates
 three maps. To display a graph, the user needs to select a station that could be filtered out by
 province as well as by the search bar.
-
-Copyright and Usage Information
-===============================
-
-This file is provided solely for the personal and private use of TA's and professors
-teaching CSC110 at the University of Toronto St. George campus. All forms of
-distribution of this code, whether as given or with any changes, are
-expressly prohibited. For more information on copyright for CSC110 materials,
-please consult our Course Syllabus.
-
-This file is Copyright (c) 2020 Dana Alshekerchi, Nehchal Kalsi, Rachel Kim, Kathy Lee.
 """
 
-from tkinter import Button, Entry, Label, StringVar, mainloop, Tk, Toplevel
+from tkinter import Button, Entry, Label, StringVar, mainloop, Tk, Toplevel, PhotoImage
 from tkinter import ttk
 import json
 import ast
+import os
 from PIL import ImageTk, Image
 import data_reading
 import combine
@@ -56,7 +45,7 @@ def window(main) -> None:
 
 
 # Creates an icon
-ROOT.iconbitmap('leaf.ico')
+# ROOT.iconbitmap('leaf.ico')
 
 # Background colour
 ROOT.config(bg='#FFE4AE')
@@ -89,7 +78,7 @@ def read_temp_data(file: str) -> dict:
 
 # Retrieving data needed
 
-UNFILTERED_DATA = read_temp_data('data.json')
+UNFILTERED_DATA = read_temp_data(os.path.join('data', 'data.json'))
 DATA = {x: UNFILTERED_DATA[x] for x in UNFILTERED_DATA if UNFILTERED_DATA[x] != {}}
 CITIES = [ast.literal_eval(x)[0] for x in DATA.keys()]
 PROVINCE = [ast.literal_eval(x)[1] for x in DATA.keys()]
@@ -108,10 +97,10 @@ def map_open() -> None:
         - 1990 < YEAR_SELECT.get() <= 2018
     """
     # Retrieves data needed from files
-    province_geojson_file_name = 'canada_provinces.geojson'
-    weather_stations_geojson = 'weather_stations.geojson'
-    daily_temps_geojson = 'data_for_maps_since_1990.json'
-    emissions_csv_file_name = 'GHG_IPCC_Can_Prov_Terr.csv'
+    province_geojson_file_name = os.path.join('data', 'canada_provinces.geojson')
+    weather_stations_geojson = os.path.join('data', 'weather_stations.geojson')
+    daily_temps_geojson = os.path.join('data', 'data_for_maps_since_1990.json')
+    emissions_csv_file_name = os.path.join('data', 'GHG_IPCC_Can_Prov_Terr.csv')
 
     province_id_map = maps.format_province_id_map(province_geojson_file_name)
 
@@ -216,10 +205,6 @@ def creators_page() -> None:
     creator_label = Label(creators_window, image=new_creator, borderwidth=0)
     creator_label.photo = new_creator
     creator_label.grid(row=2, column=1, columnspan=4)
-    why_label = Label(creators_window, text='for the CSC110 Final Project',
-                      font=('Helvetica', 10, 'bold'),
-                      bg='#FFE4AE', fg='#800000', borderwidth=0)
-    why_label.grid(row=3, column=1, columnspan=4, pady=(10, 0))
 
 
 def instructions_page() -> None:
@@ -344,25 +329,3 @@ CREATORS_BUTTON.grid(row=8, column=4, pady=(30, 0))
 
 window(ROOT)
 mainloop()
-
-if __name__ == '__main__':
-    import python_ta
-
-    python_ta.check_all(config={
-        # the names (strs) of imported modules
-        'extra-imports': ['tkinter', 'json', 'python_ta', 'python_ta.contracts',
-                          'ast', 'PIL', 'data_reading', 'combine', 'maps'],
-        # the names (strs) of functions that call print/open/input
-        'allowed-io': ['read_temp_data'],
-        'max-line-length': 100,
-        'disable': ['R1705', 'C0200']
-    })
-
-    import python_ta.contracts
-
-    python_ta.contracts.DEBUG_CONTRACTS = False
-    python_ta.contracts.check_all_contracts()
-
-    import doctest
-
-    doctest.testmod()
