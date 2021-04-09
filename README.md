@@ -26,6 +26,6 @@ EmissionTrackerCA also uses the Tkinter library to create a user-friendly interf
 ## Authors
 * **Dana Al Shekerchi** - *Project Developer* - [dalshekerchi](https://github.com/dalshekerchi)
 * **Rachel Kim** - *Project Developer* - [rachelmkin](https://github.com/rachelmkim)
-* **Nehchal Kalsi** - *Project Developer* - [niks-pixel](https://github.com/niks-pixel)
+* **Nehchal Kalsi** - *Project Developer* - [enn-cal](https://github.com/enn-cal)
 * **Kathy Lee** - *Project Developer* - [kat-lee](https://github.com/kat-lee)
 
